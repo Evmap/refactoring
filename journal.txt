@@ -2,3 +2,7 @@
 Файл: Parser.java
 Строки: 56-62
 Метод: Extract Method
+2.
+Файл: Parser.java
+Строки: 91-98, 101-108
+Метод: (проблема дублирования кода)Extract Method
