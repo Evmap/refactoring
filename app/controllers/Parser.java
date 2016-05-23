@@ -53,16 +53,8 @@ public class Parser {
     }
     // массив уже парсим в БД
 
-    int x;
-    // ищем, где начинается расписание
-    for (x = 0; x < 100; x++) {
-      if ("Дни".equals(dataBase[x][0])) {
-        break;
-      }
-    }
-
     // startLine - строка, где начинается "чистое" расписание. x и y - для обхода файла
-    int startLine = x;
+    int startLine = StartLine();
     int y = 2;
     String d; //d -> day
 
@@ -135,7 +127,15 @@ public class Parser {
         break;
       }
     }
-
   }
+    public int StartLine(){
+	int x;
+	// ищем, где начинается расписание
+	for (x = 0; x < 100; x++) {
+	    if ("Дни".equals(dataBase[x][0])) {
+		return x;
+	    }
+	}	
+    }
 
 }

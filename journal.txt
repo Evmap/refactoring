@@ -1,0 +1,4 @@
+1.
+Файл: Parser.java
+Строки: 56-62
+Метод: Extract Method
