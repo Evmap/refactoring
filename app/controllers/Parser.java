@@ -36,11 +36,13 @@ public class Parser {
 	org.apache.poi.hssf.usermodel.HSSFRow row;
 	org.apache.poi.hssf.usermodel.HSSFCell cell;
 
-	String[][] dataBase = new String[240][60]; //240 и 60 - примерный размер используемого пространства
+	static final int FILE_HEIGHT = 60;
+	static final int FILE_WIDTH = 240;
+	String[][] dataBase = new String[FILE_WIDTH][FILE_WIDTH]; //240 и 60 - примерный размер используемого пространства
 	// разбираем файл Excel в массив
-	for (int i = 0; i < 240; i++) {
+	for (int i = 0; i < FILE_WIDTH; i++) {
 	    row = sheet1.getRow(i + 1);
-	    for (int j = 0; j < 60; j++) {
+	    for (int j = 0; j < FILE_HEIGHT; j++) {
 		cell = row.getCell(j);
 		if (cell != null) {
 		    switch (cell.getCellType()) {
@@ -56,8 +58,8 @@ public class Parser {
 	// startLine - строка, где начинается "чистое" расписание. x и y - для обхода файла
 	int x = StartLine();
 	int startLine = StartLine();
-	
-	int y = 2;
+	static final int START_Y = 2;
+	int y = START_Y;
 	String d; //d -> day
 
 	while (true) {
@@ -80,8 +82,9 @@ public class Parser {
 		//System.out.println("555 UNACCEPTABLE!!!! + " + dataBase[x+1][y]);
 	    }
 
+	    static final int BREAK_CONDITION = 200;
 	    while (true) {
-		if (x > 200) {
+		if (x > BREAK_CONDITION) {
 		    break;
 		}
 
@@ -101,7 +104,7 @@ public class Parser {
 			    break;
 			} else {
 			    x = x + 1;
-			    if (x > 200) {
+			    if (x > BREAK_CONDITION) {
 				break;
 			    }
 			}
